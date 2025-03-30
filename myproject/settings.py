@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0=+tutgq#!w_gj-uvg+kzv6r$$g-4f^4(2c8)%jxksz7nzdwmu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','kadai-inform.onrender.com']
 
 
 # Application definition
@@ -76,11 +76,24 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-import dj_database_url
 
+import os
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
 }
+
+# import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+# }
 
 # from decouple import config
 # from dj_database_url import parse as dburl
