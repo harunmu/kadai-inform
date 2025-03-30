@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-0=+tutgq#!w_gj-uvg+kzv6r$$g-4f^4(2c8)%jxksz7nzdwmu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','kadai-inform.onrender.com']
-
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1','kadai-inform.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
