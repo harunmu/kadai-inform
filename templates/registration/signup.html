@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>アカウント作成フォーム</h3>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">新規作成</button>
+
+</form>
+
+{% endblock content %}
+
+
+

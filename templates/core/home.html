@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+hellos
+<div class="">
+    <a href="{% url 'account:signup' %}">アカウント作成</a>
+</div>
+
+<form action="" method="POST">{% csrf_token %}
+    <button type='submit'>実行</button>
+</form>
+
+{% endblock content%}
