@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from time import sleep
 import re
 import os
@@ -14,7 +15,8 @@ def scraping():
     op = Options()
     op.add_argument('--headless')
     chrome_driver_path = os.getenv('CHROMEDRIVER_PATH')
-    browser = webdriver.Chrome(executable_path=chrome_driver_path, options=op)
+    service = Service(chrome_driver_path)
+    browser = webdriver.Chrome(service=service, options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
     browser.get(url)
     sleep(1)
