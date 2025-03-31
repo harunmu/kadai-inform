@@ -55,6 +55,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myproject.urls'
 
+os.environ["PATH"] += os.pathsep + os.path.join(BASE_DIR, "chromedriver")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -96,6 +98,8 @@ import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+
+
 
 
 # import dj_database_url
