@@ -9,6 +9,6 @@ class HomeView(TemplateView):
     template_name = "core/home.html"
 
     def post(self, *args, **kwargs):
-        scraping()
+        # scraping()
         auto_email()
         return render(self.request, self.template_name)
