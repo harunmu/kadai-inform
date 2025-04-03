@@ -14,7 +14,7 @@ def scraping():
 
     op = Options()
     op.add_argument('--headless')
-    chrome_driver_path = os.getenv('CHROMEDRIVER_PATH')
+    chrome_driver_path = os.getenv('CHROMEDRIVER_PATH','chromedriver')
     service = Service(chrome_driver_path)
     browser = webdriver.Chrome(service=service, options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
