@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from time import sleep
 import re
 import os
+import chromedriver_binary
 
 from datetime import datetime
 import time
@@ -15,9 +16,9 @@ def scraping():
     op = Options()
     op.add_argument('--headless')
     op.binary_location = os.getenv('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
-    chrome_driver_path = os.getenv('CHROMEDRIVER_PATH','/opt/render/project/src/myproject/chromedriver')
-    service = Service(chrome_driver_path)
-    browser = webdriver.Chrome(service=service, options=op)
+    # chrome_driver_path = os.getenv('CHROMEDRIVER_PATH','/opt/render/project/src/myproject/chromedriver')
+    # service = Service(chrome_driver_path)
+    browser = webdriver.Chrome(options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
     browser.get(url)
     sleep(1)
