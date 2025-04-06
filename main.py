@@ -14,7 +14,7 @@ def scraping():
     # ブラウザの起動
 
     op = Options()
-    op.add_argument('--headless')
+    # op.add_argument('--headless')
     op.binary_location = os.getenv('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
     op.binary_location = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
     # chrome_driver_path = os.getenv('CHROMEDRIVER_PATH','/opt/render/project/src/myproject/chromedriver')
