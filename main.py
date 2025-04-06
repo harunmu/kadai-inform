@@ -71,7 +71,9 @@ def scraping():
     subject_day = int(submission_date[2]) - 3
     subject_date_list = list(submission_date)
     subject_date_list[2] = str(subject_day)
-    print(subject_date_list)
+    # print(subject_date_list)
+
+    return subject_date_list
 
 if __name__  == "__main__":
     scraping()
