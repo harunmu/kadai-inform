@@ -12,6 +12,9 @@ echo 'deb [signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http:
 # Chrome インストール
 apt-get update && apt-get install -y google-chrome-stable
 
+which google-chrome-stable
+google-chrome-stable --version
+
 apt-get install -y libxss1 libappindicator3-1 libindicator7
 
 # Pythonパッケージインストール
