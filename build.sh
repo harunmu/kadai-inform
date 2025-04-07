@@ -3,17 +3,23 @@
 # インストール用パッケージ
 apt-get update && apt-get install -y wget gnupg curl unzip
 
-# Chrome の公式 GPG キー追加
-curl -sSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-linux-signing-keyring.gpg
+# # Chrome の公式 GPG キー追加
+# curl -sSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-linux-signing-keyring.gpg
 
-# Chrome の apt リポジトリ追加
-echo 'deb [signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list
+# # Chrome の apt リポジトリ追加
+# echo 'deb [signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list
 
-# Chrome インストール
-apt-get update && apt-get install -y google-chrome-stable
+# # Chrome インストール
+# apt-get update && apt-get install -y google-chrome-stable
 
-which google-chrome-stable
-google-chrome-stable --version
+# which google-chrome-stable
+# google-chrome-stable --version
+
+
+wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/linux64/chrome-linux64.zip
+unzip chrome-linux64.zip
+mv chrome-linux64/chrome chromium/chrome
+chmod +x chromium/chrome
 
 apt-get install -y libxss1 libappindicator3-1 libindicator7
 
