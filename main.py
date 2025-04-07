@@ -15,6 +15,7 @@ def scraping():
 
     op = Options()
     op.add_argument('--headless')
+    op.add_argument("--user-data-dir=/tmp/selenium_user_data")
     op.binary_location = '/opt/render/project/src/chromium/chrome'
     browser = webdriver.Chrome(options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
