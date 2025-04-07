@@ -14,6 +14,8 @@ def scraping():
     # ブラウザの起動
 
     op = Options()
+    op.add_argument('--no-sandbox')  # サンドボックスを無効化
+    op.add_argument('--disable-dev-shm-usage')  # 開発用共有メモリの使用を無効化
     op.add_argument('--headless')
     op.add_argument("--user-data-dir=/tmp/selenium_user_data")
     op.binary_location = '/opt/render/project/src/chromium/chrome'
