@@ -14,14 +14,15 @@ apt-get update && apt-get install -y wget gnupg curl unzip
 
 # which google-chrome-stable
 # google-chrome-stable --version
+apt-get install -y libxss1 libappindicator3-1 libindicator7
 
 
 wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/linux64/chrome-linux64.zip
 unzip chrome-linux64.zip
+mkdir -p chromium  # chromium ディレクトリがない場合に作成
 mv chrome-linux64/chrome chromium/chrome
 chmod +x chromium/chrome
 
-apt-get install -y libxss1 libappindicator3-1 libindicator7
 
 # Pythonパッケージインストール
 pip install -r requirements.txt
