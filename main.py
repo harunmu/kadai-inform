@@ -7,7 +7,7 @@ from time import sleep
 import uuid
 import re
 import os
-# import chromedriver_binary
+import chromedriver_binary
 
 from datetime import datetime
 import time
@@ -23,8 +23,8 @@ def scraping():
     # # op.add_argument(f'--user-data-dir=/dev/shm/selenium_user_data_{uuid.uuid4()}')
     # op.binary_location = '/opt/render/project/src/chromium/chrome'
     op.binary_location = '/opt/render/project/.render/chrome/opt/google/chrome/chrome'
-    service = Service(ChromeDriverManager(version="135.0.7049.84").install())
-    browser = webdriver.Chrome(service=service, options=op)
+    # service = Service(ChromeDriverManager(version="135.0.7049.84").install())
+    browser = webdriver.Chrome(options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
     browser.get(url)
     sleep(1)
