@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from time import sleep
+import uuid
 import re
 import os
 import chromedriver_binary
@@ -17,7 +18,7 @@ def scraping():
     op.add_argument('--no-sandbox')  # サンドボックスを無効化
     op.add_argument('--disable-dev-shm-usage')  # 開発用共有メモリの使用を無効化
     op.add_argument('--headless')
-    op.add_argument("--user-data-dir=/tmp/selenium_user_data")
+    op.add_argument("--user-data-dir=/tmp/selenium_user_data_{uuid.uuid4()}")
     op.binary_location = '/opt/render/project/src/chromium/chrome'
     browser = webdriver.Chrome(options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
