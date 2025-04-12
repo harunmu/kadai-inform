@@ -18,10 +18,10 @@ class HomeView(TemplateView):
         auto_email(inform_date_data)
         return render(self.request, self.template_name)
     
-    @csrf_exempt
-    def cron_run(request):
-        if request.method == 'GET':
-            inform_date_data = scraping()
-            auto_email(inform_date_data)
-            return JsonResponse({'status':'success'})
-        return JsonResponse({'status':'invalid method'},status=405)
+    # @csrf_exempt
+    # def cron_run(request):
+    #     if request.method == 'GET':
+    #         inform_date_data = scraping()
+    #         auto_email(inform_date_data)
+    #         return JsonResponse({'status':'success'})
+    #     return JsonResponse({'status':'invalid method'},status=405)
