@@ -52,8 +52,9 @@ def scraping():
     # btn = browser.find_element(By.XPATH,'/html/body/div[1]/div[1]/a[2]')
     # btn.click()
     #テスト
+
     sleep(1)
-    btn = browser.find_element(By.XPATH, '/html/body/div/div[2]/div/div/div/div/form/div[4]/input[2]')
+    btn = browser.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]')
 
     # 日時取得
     sleep(1)

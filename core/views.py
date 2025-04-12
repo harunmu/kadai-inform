@@ -9,9 +9,9 @@ class HomeView(TemplateView):
     template_name = "core/home.html"
 
     def post(self, *args, **kwargs):
-        scraping()
-        # day = inform_date_data[2]
+        inform_date_data = scraping()
+        day = inform_date_data[2]
         # auto_email(day)
-        day = '123'
+        # day = '123'
         auto_email(day)
         return render(self.request, self.template_name)
