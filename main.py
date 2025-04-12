@@ -22,6 +22,7 @@ def scraping():
     op.add_argument('--headless')
     # # op.add_argument(f'--user-data-dir=/dev/shm/selenium_user_data_{uuid.uuid4()}')
     # op.binary_location = '/opt/render/project/src/chromium/chrome'
+    op.binary_location = '/opt/render/project/.render/chrome/opt/google/chrome/chrome'
     service = Service(ChromeDriverManager().install())
     browser = webdriver.Chrome(service=service, options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
