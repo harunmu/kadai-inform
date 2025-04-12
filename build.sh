@@ -1,27 +1,45 @@
+# #!/usr/bin/env bash
+
+# # インストール用パッケージ
+# apt-get update && apt-get install -y wget gnupg curl unzip
+
+# # # Chrome の公式 GPG キー追加
+# # curl -sSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-linux-signing-keyring.gpg
+
+# # # Chrome の apt リポジトリ追加
+# # echo 'deb [signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list
+
+# # # Chrome インストール
+# # apt-get update && apt-get install -y google-chrome-stable
+
+# # which google-chrome-stable
+# # google-chrome-stable --version
+# apt-get install -y libxss1 libappindicator3-1 libindicator7
+
+
+# wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/linux64/chrome-linux64.zip
+# unzip chrome-linux64.zip
+# mkdir -p chromium  # chromium ディレクトリがない場合に作成
+# mv chrome-linux64/chrome chromium/chrome
+# chmod +x chromium/chrome
+
 #!/usr/bin/env bash
+# exit on error
+set -o errexit
 
-# インストール用パッケージ
-apt-get update && apt-get install -y wget gnupg curl unzip
+STORAGE_DIR=/opt/render/project/.render
 
-# # Chrome の公式 GPG キー追加
-# curl -sSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-linux-signing-keyring.gpg
-
-# # Chrome の apt リポジトリ追加
-# echo 'deb [signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list
-
-# # Chrome インストール
-# apt-get update && apt-get install -y google-chrome-stable
-
-# which google-chrome-stable
-# google-chrome-stable --version
-apt-get install -y libxss1 libappindicator3-1 libindicator7
-
-
-wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/linux64/chrome-linux64.zip
-unzip chrome-linux64.zip
-mkdir -p chromium  # chromium ディレクトリがない場合に作成
-mv chrome-linux64/chrome chromium/chrome
-chmod +x chromium/chrome
+if [ ! -d "$STORAGE_DIR/chrome" ]; then
+  echo "...Downloading Chrome"
+  mkdir -p $STORAGE_DIR/chrome
+  cd $STORAGE_DIR/chrome
+  wget -P ./ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
+  rm ./google-chrome-stable_current_amd64.deb
+  cd $HOME/project/src # Make sure we return to where we were
+else
+  echo "...Using Chrome from cache"
+fi
 
 
 # Pythonパッケージインストール

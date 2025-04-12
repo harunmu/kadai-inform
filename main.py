@@ -1,12 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from time import sleep
 import uuid
 import re
 import os
-import chromedriver_binary
+# import chromedriver_binary
 
 from datetime import datetime
 import time
@@ -20,8 +21,9 @@ def scraping():
     # op.add_argument('--disable-extensions')
     op.add_argument('--headless')
     # # op.add_argument(f'--user-data-dir=/dev/shm/selenium_user_data_{uuid.uuid4()}')
-    op.binary_location = '/opt/render/project/src/chromium/chrome'
-    browser = webdriver.Chrome(options=op)
+    # op.binary_location = '/opt/render/project/src/chromium/chrome'
+    service = Service(ChromeDriverManager().install())
+    browser = webdriver.Chrome(service=service, options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
     browser.get(url)
     sleep(1)
