@@ -51,10 +51,10 @@ def scraping():
     # 授業情報ページに移動
     wait = WebDriverWait(browser, 10)
 
-    kadai_btn = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
+    kadai_btn = wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
     kadai_btn.click()
     #テスト
-    kadai = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
+    kadai = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div[2]/div/span')))
     goal = kadai.text
     return goal
 
