@@ -52,34 +52,36 @@ def scraping():
     # btn = browser.find_element(By.XPATH,'/html/body/div[1]/div[1]/a[2]')
     # btn.click()
     #テスト
+    goal = 'success'
+    return goal
 
-    sleep(1)
-    btn = browser.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]')
+    # sleep(1)
+    # btn = browser.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]')
 
-    # 日時取得
-    sleep(1)
-    data = btn.text
-    pattern = r'(\d{4})年(\d{2})月(\d{2})日'
-    matches = re.findall(pattern,data)
-    # year, month, day = matches[1]
-    # year, month, day = int(year), int(month), int(day)
-    # print(data)
-    # data_info = browser.find_element(By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[3]/div[2]/div/div[2]/div[2]/div[5]/span')
-    # data_text = data_info.text
-    # print(data_text)
+    # # 日時取得
+    # sleep(1)
+    # data = btn.text
+    # pattern = r'(\d{4})年(\d{2})月(\d{2})日'
+    # matches = re.findall(pattern,data)
+    # # year, month, day = matches[1]
+    # # year, month, day = int(year), int(month), int(day)
+    # # print(data)
+    # # data_info = browser.find_element(By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[3]/div[2]/div/div[2]/div[2]/div[5]/span')
+    # # data_text = data_info.text
+    # # print(data_text)
 
 
 
-    browser.quit()
+    # browser.quit()
 
-    # return matches[1]
-    submission_date = matches[1]
-    subject_day = int(submission_date[2]) - 3
-    subject_date_list = list(submission_date)
-    subject_date_list[2] = str(subject_day)
-    # print(subject_date_list)
+    # # return matches[1]
+    # submission_date = matches[1]
+    # subject_day = int(submission_date[2]) - 3
+    # subject_date_list = list(submission_date)
+    # subject_date_list[2] = str(subject_day)
+    # # print(subject_date_list)
 
-    return subject_date_list
+    # return subject_date_list
 
 if __name__  == "__main__":
     scraping()
