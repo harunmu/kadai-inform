@@ -48,11 +48,12 @@ def scraping():
     # kadai_btn.click()
 
     # 授業情報ページに移動
-    # sleep(1)
-    # btn = browser.find_element(By.XPATH,'/html/body/div[1]/div[1]/a[2]')
-    # btn.click()
+    sleep(1)
+    kadai_btn = browser.find_element(By.XPATH,'/html/body/div[1]/div[1]/span/a')
+    kadai_btn.click()
     #テスト
-    goal = 'success'
+    kadai = browser.find_element(By.XPATH,'/html/body/div[1]/div[1]/span/a')
+    goal = kadai.text
     return goal
 
     # sleep(1)
