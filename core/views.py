@@ -12,6 +12,6 @@ class HomeView(TemplateView):
         # inform_date_data = scraping()
         # day = inform_date_data[2]
         # auto_email(day)
-        day = 123
+        day = '123'
         auto_email(day)
         return render(self.request, self.template_name)
