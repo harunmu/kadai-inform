@@ -4,5 +4,6 @@ from .views import *
 app_name = 'core'
 urlpatterns = [
     path('',HomeView.as_view(),name='home'),
-    path('cron-job/',HomeView.cron_run,name='cron-job'),
+    path('wakeup/',wakeup,name=wakeup),
+    path('cron-job/',cron_run,name='cron-job'),
 ]

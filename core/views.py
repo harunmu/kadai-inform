@@ -7,6 +7,17 @@ from craft_mail import auto_email
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+def wakeup(request):
+    return JsonResponse({"message": "I'm awake!"})
+
+@csrf_exempt
+def cron_run(request):
+    if request.method == 'GET':
+        inform_date_data = scraping()
+        auto_email(inform_date_data)
+        return JsonResponse({'status':'success'})
+    return JsonResponse({'status':'invalid method'},status=405)
+
 class HomeView(TemplateView):
     template_name = "core/home.html"
 
@@ -18,10 +29,3 @@ class HomeView(TemplateView):
         auto_email(inform_date_data)
         return render(self.request, self.template_name)
     
-    @csrf_exempt
-    def cron_run(request):
-        if request.method == 'GET':
-            inform_date_data = scraping()
-            auto_email(inform_date_data)
-            return JsonResponse({'status':'success'})
-        return JsonResponse({'status':'invalid method'},status=405)
