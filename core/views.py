@@ -14,8 +14,6 @@ def wakeup(request):
 
 @csrf_exempt
 def cron_run(request):
-    requests.get("https://kadai-inform.onrender.com/wakeup/")
-    time.sleep(5)  # レンダーが目を覚ます時間を確保
     if request.method == 'GET':
         inform_date_data = scraping()
         auto_email(inform_date_data)

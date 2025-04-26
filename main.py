@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import re
 import os
-# import chromedriver_binary
+import chromedriver_binary
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
