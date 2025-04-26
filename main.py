@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import re
 import os
-import chromedriver_binary
+# import chromedriver_binary
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -54,10 +54,9 @@ def scraping():
     kadai_btn = wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
     kadai_btn.click()
     #テスト
-    kadai = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div[2]/div/span')))
+    kadai = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div[1]/div[5]/span[2]')))
     goal = kadai.text
     return goal
-
     # sleep(1)
     # btn = browser.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]')
 

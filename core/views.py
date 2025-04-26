@@ -7,11 +7,15 @@ from craft_mail import auto_email
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+import requests,time
+
 def wakeup(request):
     return JsonResponse({"message": "I'm awake!"})
 
 @csrf_exempt
 def cron_run(request):
+    requests.get("https://kadai-inform.onrender.com/wakeup/")
+    time.sleep(5)  # レンダーが目を覚ます時間を確保
     if request.method == 'GET':
         inform_date_data = scraping()
         auto_email(inform_date_data)
