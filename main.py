@@ -5,13 +5,11 @@ from selenium.webdriver.common.by import By
 # from selenium.webdriver.chrome.service import Service
 from time import sleep
 import re
-import os
+# import os
 import chromedriver_binary
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from datetime import datetime
-import time
 
 def scraping():
     # ブラウザの起動
@@ -44,68 +42,25 @@ def scraping():
     elem_btn.click()
 
     # 課題ページに移動
-    # sleep(1)
-    # kadai_btn = browser.find_element(By.XPATH,"/html/body/div[1]/div[1]/span/a")
-    # kadai_btn.click()
 
-    # 授業情報ページに移動
     wait = WebDriverWait(browser, 10)
 
     kadai_btn = wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
     kadai_btn.click()
-    #テスト
-    kadai = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div[1]/div[5]/span[2]')))
-    goal = kadai.text
-    return goal
-    # sleep(1)
-    # btn = browser.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]')
 
-    # # 日時取得
-    # sleep(1)
-    # data = btn.text
-    # pattern = r'(\d{4})年(\d{2})月(\d{2})日'
-    # matches = re.findall(pattern,data)
-    # # year, month, day = matches[1]
-    # # year, month, day = int(year), int(month), int(day)
-    # # print(data)
-    # # data_info = browser.find_element(By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[3]/div[2]/div/div[2]/div[2]/div[5]/span')
-    # # data_text = data_info.text
-    # # print(data_text)
+    kadai_list = wait.until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]')))
 
+    class_name_list = []
 
+    for i,kadai_info in enumerate(kadai_list):
+        kadai_deadline_list = re.findall(r'\d{4}/\d{2}/\d{2}',kadai_info.text)
+        class_name = browser.find_element(By.XPATH,f"/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div[{i}]/div[1]")
+        class_name_list.append(class_name.text)
+    
+    return kadai_deadline_list,class_name_list
 
-    # browser.quit()
-
-    # # return matches[1]
-    # submission_date = matches[1]
-    # subject_day = int(submission_date[2]) - 3
-    # subject_date_list = list(submission_date)
-    # subject_date_list[2] = str(subject_day)
-    # # print(subject_date_list)
-
-    # return subject_date_list
 
 if __name__  == "__main__":
     scraping()
-    
-# submission_date = scraping()
-# subject_day = int(submission_date[2]) - 3
-# subject_date_list = list(submission_date)
-# subject_date_list[2] = str(subject_day)
-# print(subject_date_list)
-# subject_time_list = ['14', '00', '00']
-
-# subject_date = '-'.join(subject_date_list)
-# subject_time = ':'.join(subject_time_list)
-# subject_datetime = subject_date + ' ' + subject_time
-# subject_obj = datetime.strptime(subject_datetime, "%Y-%m-%d %H:%M:%S")
-
-# now = datetime.now()
-
-# if now < subject_obj:
-#         wait_seconds = (subject_obj - now).total_seconds()
-#         print(f"指定された日時まで{wait_seconds}秒待機します。")
-#         time.sleep(wait_seconds)  # 指定した日時まで待機
-#         print('success')
 
 
