@@ -29,8 +29,8 @@ def cron_run(request):
             deadline_limit_date = deadline_limit.days
             class_name = class_name_list[i]
 
-            if deadline_limit_date <= 3:
-                auto_email(deadline_limit_date,class_name)
+            # if deadline_limit_date <= 3:
+            auto_email(deadline_limit_date,class_name)
         
         return JsonResponse({'status':'success'})
     return JsonResponse({'status':'invalid method'},status=405)
