@@ -9,7 +9,7 @@ import smtplib
 
 # content = sel.output()
 
-def auto_email(class_name,deadline_limit_date):
+def auto_email(email_contents):
 
 
 
@@ -18,8 +18,12 @@ def auto_email(class_name,deadline_limit_date):
 
     from_email = 'rushia0901@gmail.com'
     to_email = 'rushia0901@gmail.com'
-    mail_title = "h"
-    message = "科目名:" + class_name + " 期限：" + str(deadline_limit_date)
+    mail_title = "提出期限が近い課題があります"
+    message = ""
+    for email_content in email_contents:
+        message += f"提出 {email_content[0]}日前\n"
+        message += f"科目名: {email_content[1]}\n"
+        message += f"期限: {email_content[2]}\n\n"
 
     # MIMEオブジェクトでメールを作成
 

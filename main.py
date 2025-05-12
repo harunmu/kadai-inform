@@ -48,13 +48,14 @@ def scraping():
     kadai_btn = wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
     kadai_btn.click()
 
-    kadai_list = wait.until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]')))
+    kadai_list = wait.until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div')))
 
     class_name_list = []
+    kadai_deadline_list = []
 
     for i,kadai_info in enumerate(kadai_list):
         kadai_deadline_list = re.findall(r'\d{4}/\d{2}/\d{2}',kadai_info.text)
-        class_name = browser.find_element(By.XPATH,f"/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div[{i}]/div[1]")
+        class_name = browser.find_element(By.XPATH,f"/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div[{i+1}]/div[1]")
         class_name_list.append(class_name.text)
     
     return kadai_deadline_list,class_name_list
