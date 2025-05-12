@@ -32,7 +32,7 @@ def cron_run(request):
                 contents_info = [deadline_limit_date,class_name,deadline_date]
                 email_contents.append(contents_info)
                 
-        auto_email(deadline_limit_date,class_name)
+        auto_email(email_contents)
         
         return JsonResponse({'status':'success'})
     
