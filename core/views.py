@@ -39,10 +39,20 @@ class HomeView(TemplateView):
     template_name = "core/home.html"
 
     def post(self, *args, **kwargs):
-        inform_date_data = scraping()
-        # day = inform_date_data[2]
-        # auto_email(day)
-        # day = '123'
-        auto_email(inform_date_data)
+        kadai_deadline_list,class_name_list= scraping()
+        current_day = datetime.now().date()
+        # execute_day = current_day + timedelta(days=3)
+        # execute_day_date = execute_day.date()
+
+        for i, kadai_deadline in enumerate(kadai_deadline_list):
+            deadline = datetime.strptime(kadai_deadline,'%Y/%m/%d')
+            deadline_date = deadline.date()
+
+            deadline_limit = deadline_date - current_day
+            deadline_limit_date = deadline_limit.days
+            class_name = class_name_list[i]
+
+            # if deadline_limit_date <= 3:
+            auto_email(deadline_limit_date,class_name)
         return render(self.request, self.template_name)
     
