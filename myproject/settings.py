@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,19 +78,6 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
-# import os
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': os.getenv('DB_HOST'),
-#         'PORT': os.getenv('DB_PORT'),
-#     }
-# }
-
 import os
 import dj_database_url
 
@@ -102,32 +88,6 @@ DATABASES = {
         ssl_require=True
     )
 }
-
-
-
-
-# import dj_database_url
-
-# DATABASES = {
-#     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
-# }
-
-# from decouple import config
-# from dj_database_url import parse as dburl
-
-# default_dburl = 'sqlite:///' + str(BASE_DIR / "db.sqlite3")
-
-# DATABASES = {
-#     "default": config('DATABASE_URL', default=default_dburl, cast=dburl)
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

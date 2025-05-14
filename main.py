@@ -12,17 +12,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def scraping():
-    # ブラウザの起動
 
+    # ブラウザの起動
     op = Options()
     op.add_argument('--no-sandbox')  # サンドボックスを無効化
     op.add_argument('--disable-dev-shm-usage')  # 開発用共有メモリの使用を無効化
-    # op.add_argument('--disable-extensions')
     op.add_argument('--headless')
-    # # op.add_argument(f'--user-data-dir=/dev/shm/selenium_user_data_{uuid.uuid4()}')
-    # op.binary_location = '/opt/render/project/src/chromium/chrome'
     op.binary_location = '/opt/render/project/.render/chrome/opt/google/chrome/chrome'
-    # service = Service(ChromeDriverManager(version="135.0.7049.84").install())
     browser = webdriver.Chrome(options=op)
     url = 'https://beefplus.center.kobe-u.ac.jp/login'
     browser.get(url)
@@ -48,6 +44,7 @@ def scraping():
     kadai_btn = wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div[1]/span/a')))
     kadai_btn.click()
 
+    #課題の詳細を所得
     kadai_list = wait.until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div')))
 
     class_name_list = []

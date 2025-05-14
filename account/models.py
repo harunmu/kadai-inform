@@ -12,15 +12,7 @@ class CustomUserManager(BaseUserManager):
         if not username:
             raise ValueError("The given username must be set")
         email = self.normalize_email(email)
-        
-        # GlobalUserModel = ... は消しても問題ありません
-        # username = ... は消しても問題ありません
-        
         user = self.model(username=username, email=email, **extra_fields)
-        
-        # superuserにもカートを持たせたい場合は以下コードをコメントアウトしてください
-        # user.cart = Cart.objects.create()
-        
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -41,7 +33,6 @@ class CustomUserManager(BaseUserManager):
 
         return self._create_user(username, email, password, **extra_fields)
     
-    # with_perm メソッドは無くても問題ありません
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
@@ -74,8 +65,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ),
     )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
-    #related_nameを指定するとCartモデル側からカートと紐づくユーザーを呼び出せる
-
     objects = CustomUserManager()
 
     EMAIL_FIELD = "email"

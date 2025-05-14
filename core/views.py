@@ -1,38 +1,23 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView
 
-# Create your views here.
 from main import scraping
 from craft_mail import auto_email
+from check_deadline import check_deadline
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-import requests,time
-from datetime import datetime,timedelta
-
-# def wakeup(request):
-#     return JsonResponse({"message": "I'm awake!"})
+from datetime import datetime
 
 @csrf_exempt
 def cron_run(request):
     if request.method == 'GET':
-        
-        email_contents = []
-        
+            
         kadai_deadline_list,class_name_list= scraping()
-        current_day = datetime.now().date()
-
-        for class_name, kadai_deadline in zip(class_name_list,kadai_deadline_list):
-            deadline = datetime.strptime(kadai_deadline[0],'%Y/%m/%d')
-            deadline_date = deadline.date()
-
-            deadline_limit = deadline_date - current_day
-            deadline_limit_date = deadline_limit.days
-            if deadline_limit_date <= 7:
-                contents_info = [deadline_limit_date,class_name,deadline_date]
-                email_contents.append(contents_info)
-                
-        auto_email(email_contents)
+        email_contents = check_deadline(kadai_deadline_list,class_name_list)
+        
+        if email_contents:
+            auto_email(email_contents)
         
         return JsonResponse({'status':'success'})
     
@@ -43,23 +28,12 @@ class HomeView(TemplateView):
     template_name = "core/home.html"
 
     def post(self, *args, **kwargs):
-        
-        email_contents = []
-        
+
         kadai_deadline_list,class_name_list= scraping()
-        current_day = datetime.now().date()
+        email_contents = check_deadline(kadai_deadline_list,class_name_list)
         
-        for class_name, kadai_deadline in zip(class_name_list,kadai_deadline_list):
-            deadline = datetime.strptime(kadai_deadline[0],'%Y/%m/%d')
-            deadline_date = deadline.date()
-
-            deadline_limit = deadline_date - current_day
-            deadline_limit_date = deadline_limit.days
-            if deadline_limit_date <= 7:
-                contents_info = [deadline_limit_date,class_name,deadline_date]
-                email_contents.append(contents_info)
-
-        auto_email(email_contents)
+        if email_contents:
+            auto_email(email_contents)
         
         return render(self.request, self.template_name)
     
