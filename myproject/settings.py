@@ -54,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myproject.urls'
 
-os.environ["PATH"] += os.pathsep + os.path.join(BASE_DIR, "chromedriver")
+# os.environ["PATH"] += os.pathsep + os.path.join(BASE_DIR, "chromedriver")
 
 TEMPLATES = [
     {
