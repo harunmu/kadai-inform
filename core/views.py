@@ -13,7 +13,7 @@ from datetime import datetime
 def cron_run(request):
     if request.method == 'GET':
             
-        kadai_deadline_list,class_name_list= scraping()
+        class_name_list,kadai_deadline_list= scraping()
         email_contents = check_deadline(class_name_list,kadai_deadline_list)
         
         if email_contents:
@@ -29,7 +29,7 @@ class HomeView(TemplateView):
 
     def post(self, *args, **kwargs):
 
-        kadai_deadline_list,class_name_list= scraping()
+        class_name_list,kadai_deadline_list,= scraping()
         email_contents = check_deadline(class_name_list,kadai_deadline_list,)
         
         if email_contents:
