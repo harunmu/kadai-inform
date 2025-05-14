@@ -55,7 +55,7 @@ def scraping():
         class_name = browser.find_element(By.XPATH,f"/html/body/div[1]/div[2]/div[1]/div[2]/form/div[2]/div[2]/div/div/div[2]/div[{i+1}]/div[1]")
         class_name_list.append(class_name.text)
     
-    return kadai_deadline_list,class_name_list
+    return class_name_list,kadai_deadline_list,
 
 
 if __name__  == "__main__":
