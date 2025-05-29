@@ -6,6 +6,7 @@ from craft_mail import auto_email
 from check_deadline import check_deadline
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from account.models import CustomUser
 
 from datetime import datetime
 
@@ -29,11 +30,17 @@ class HomeView(TemplateView):
 
     def post(self, *args, **kwargs):
 
-        class_name_list,kadai_deadline_list,= scraping()
-        email_contents = check_deadline(class_name_list,kadai_deadline_list,)
+        # class_name_list,kadai_deadline_list,= scraping()
+        # email_contents = check_deadline(class_name_list,kadai_deadline_list,)
         
-        if email_contents:
-            auto_email(email_contents)
+        login_info = list(
+            CustomUser.object.exclude(login_id__isnull=True).exclude(login_password__isnull=True).values_list('login_id','login_password')
+        )
+        print(login_info)
+        
+        
+        # if email_contents:
+        #     auto_email(email_contents)
         
         return render(self.request, self.template_name)
     
