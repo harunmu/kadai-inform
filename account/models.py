@@ -50,6 +50,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             "unique": _("A user with that username already exists."),
         },
     )
+    login_id = models.CharField(
+        _("login_id"),
+        max_length=150,
+        help_text=_(
+            "Required. 1111111A"
+        ),
+    )
+    login_password = models.CharField(
+        _("login_password"),
+        max_length=150,
+    )
     email = models.EmailField(_("email address"), blank=True)
     is_staff = models.BooleanField(
         _("staff status"),

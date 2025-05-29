@@ -9,4 +9,4 @@ class SignupForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username',) #パスワード以外の表示したい項目を記述
+        fields = ('username','login_id','login_password') #パスワード以外の表示したい項目を記述
