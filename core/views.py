@@ -33,13 +33,16 @@ class HomeView(TemplateView):
         # class_name_list,kadai_deadline_list,= scraping()
         # email_contents = check_deadline(class_name_list,kadai_deadline_list,)
         
-        login_info = list(
+        login_info_list = list(
             CustomUser.objects.exclude(login_id__isnull=True).exclude(login_password__isnull=True).values_list('login_id','login_password')
         )
-        login_id = login_info[0][0]
-        login_password = login_info[0][1]
-        scraping(login_id, login_password)
-        print('success')
+        for login_info in login_info_list:
+            login_id = login_info[0]
+            login_password = login_info[1]
+            class_name_list,kadai_deadline_list= scraping(login_id, login_password)
+            email_contents = check_deadline(class_name_list,kadai_deadline_list)
+            if email_contents:
+                auto_email(email_contents)
 
         
         
