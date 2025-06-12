@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def scraping():
+def scraping(login_id,login_password):
 
     # ブラウザの起動
     op = Options()
@@ -32,8 +32,8 @@ def scraping():
     elem_id = browser.find_element(By.ID,"username")
     elem_password = browser.find_element(By.ID,"password")
     elem_btn = browser.find_element(By.ID,"kc-login")
-    elem_id.send_keys('2355081t')
-    elem_password.send_keys('IRK=8urd')
+    elem_id.send_keys(login_id)
+    elem_password.send_keys(login_password)
     sleep(1)
     elem_btn.click()
 

@@ -36,7 +36,12 @@ class HomeView(TemplateView):
         login_info = list(
             CustomUser.objects.exclude(login_id__isnull=True).exclude(login_password__isnull=True).values_list('login_id','login_password')
         )
-        print(login_info)
+        login_id = login_info[0][0]
+        login_password = login_info[0][1]
+        scraping(login_id, login_password)
+        print('success')
+
+        
         
         
         # if email_contents:
