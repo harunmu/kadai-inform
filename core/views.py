@@ -39,11 +39,12 @@ class HomeView(TemplateView):
         for login_info in login_info_list:
             login_id = login_info[0]
             login_password = login_info[1]
-            email_adress = login_info[2]
+            email_address = login_info[2]
+            print(email_address)
             class_name_list,kadai_deadline_list= scraping(login_id, login_password)
             email_contents = check_deadline(class_name_list,kadai_deadline_list)
             if email_contents:
-                auto_email(email_contents,email_adress)
+                auto_email(email_contents,email_address)
 
         
         
