@@ -2,14 +2,60 @@
 
 {% block content %}
 
-<h3>アカウント作成フォーム</h3>
+{% load static %}
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
 
-    <button type="submit">新規作成</button>
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">アカウント新規作成</h2>
 
-</form>
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            
+            <!-- ユーザー名 -->
+            <div>
+                <label class="block mb-1 font-semibold">ユーザー名</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <p class="text-sm text-red-500">{{ form.username.errors }}</p>
+                {% endif %}
+            </div>
+
+            <!-- ログインID -->
+            <div>
+                <label class="block mb-1 font-semibold">ログインID</label>
+                {{ form.login_id }}
+                {% if form.login_id.errors %}
+                    <p class="text-sm text-red-500">{{ form.login_id.errors }}</p>
+                {% endif %}
+            </div>
+
+            <!-- パスワード1 -->
+            <div>
+                <label class="block mb-1 font-semibold">パスワード</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <p class="text-sm text-red-500">{{ form.password1.errors }}</p>
+                {% endif %}
+            </div>
+
+            <!-- パスワード2 -->
+            <div>
+                <label class="block mb-1 font-semibold">パスワード（確認）</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <p class="text-sm text-red-500">{{ form.password2.errors }}</p>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 transition duration-200">
+                登録する
+            </button>
+        </form>
+
+        <p class="mt-6 text-sm text-center text-gray-600">
+            すでにアカウントをお持ちですか？ <a href="{% url 'login' %}" class="text-blue-500 underline">ログイン</a>
+        </p>
+    </div>
 
 {% endblock content %}
 
