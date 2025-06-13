@@ -51,12 +51,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         },
     )
     login_id = models.CharField(
-        _("login_id"),
+        _("login id"),
         max_length=150,
         blank=True,
     )
     login_password = models.CharField(
-        _("login_password"),
+        _("login password"),
         max_length=150,
         blank=True,
     )
