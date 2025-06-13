@@ -34,7 +34,7 @@ class HomeView(TemplateView):
         # email_contents = check_deadline(class_name_list,kadai_deadline_list,)
         
         login_info_list = list(
-            CustomUser.objects.exclude(login_id__isnull=True).exclude(login_password__isnull=True).exclude(email__isnull=True).values_list('login_id','login_password','email')
+            CustomUser.objects.exclude(login_id__isnull=True).exclude(login_password__isnull=True).exclude(email__isnull=True).exclude(email__exact='').values_list('login_id','login_password','email')
         )
         print(login_info_list)
         for login_info in login_info_list:
