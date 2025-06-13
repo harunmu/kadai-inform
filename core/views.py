@@ -36,11 +36,11 @@ class HomeView(TemplateView):
         login_info_list = list(
             CustomUser.objects.exclude(login_id__isnull=True).exclude(login_password__isnull=True).exclude(email__isnull=True).values_list('login_id','login_password','email')
         )
+        print(login_info_list)
         for login_info in login_info_list:
             login_id = login_info[0]
             login_password = login_info[1]
             email_address = login_info[2]
-            print(email_address)
             class_name_list,kadai_deadline_list= scraping(login_id, login_password)
             email_contents = check_deadline(class_name_list,kadai_deadline_list)
             if email_contents:
