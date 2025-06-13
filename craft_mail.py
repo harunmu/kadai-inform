@@ -2,12 +2,12 @@ import datetime
 from email.mime.text import MIMEText
 import smtplib
 
-def auto_email(email_contents):
+def auto_email(email_contents,email_adress):
 
     # メール情報の設定
 
     from_email = 'rushia0901@gmail.com'
-    to_email = 'rushia0901@gmail.com'
+    to_email = email_adress
     mail_title = "提出期限が近い課題があります"
     message = ""
     for email_content in email_contents:
