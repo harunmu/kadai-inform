@@ -61,6 +61,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         blank=True,
     )
     email = models.EmailField(_("email address"), blank=True)
+    is_notification= models.BooleanField(
+        _("notification"),
+        default = True,
+        help_text=_("通知メールを送るかを示します")
+        )
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
