@@ -65,7 +65,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         _("notification"),
         default = True,
         help_text=_("通知メールを送るかを示します")
-        )
+    )
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
