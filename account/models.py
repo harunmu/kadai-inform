@@ -51,20 +51,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         },
     )
     login_id = models.CharField(
-        _("login id"),
+        _("ログインID"),
         max_length=150,
         blank=True,
     )
     login_password = models.CharField(
-        _("login password"),
+        _("ログインパスワード"),
         max_length=150,
         blank=True,
     )
     email = models.EmailField(_("email address"), blank=True)
     is_notification= models.BooleanField(
-        _("notification"),
+        _("通知"),
         default = True,
-        help_text=_("通知メールを送るかを示します")
+        help_text=_("通知メールを送るかどうかを示します")
     )
     is_staff = models.BooleanField(
         _("staff status"),

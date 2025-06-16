@@ -45,6 +45,7 @@ def send_kadai_email(email_address,email_contents,):
         message += f"提出 {email_content[0]}日前\n"
         message += f"科目名: {email_content[1]}\n"
         message += f"期限: {email_content[2]}\n\n"
+    message += "https://beefplus.center.kobe-u.ac.jp"
     
     auto_email(title,message,email_address)
 
