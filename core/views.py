@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from main import scraping
-from craft_mail import auto_email
+from create_email import send_kadai_email
 from check_deadline import check_deadline
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -13,12 +13,18 @@ from datetime import datetime
 @csrf_exempt
 def cron_run(request):
     if request.method == 'GET':
-            
-        class_name_list,kadai_deadline_list= scraping()
-        email_contents = check_deadline(class_name_list,kadai_deadline_list)
-        
-        if email_contents:
-            auto_email(email_contents)
+
+        login_info_list = list(
+            CustomUser.objects.exclude(login_id__isnull=True).exclude(login_password__isnull=True).exclude(email__isnull=True).exclude(email__exact='').values_list('login_id','login_password','email')
+        )
+        for login_info in login_info_list:
+            login_id = login_info[0]
+            login_password = login_info[1]
+            email_address = login_info[2]
+            class_name_list,kadai_deadline_list= scraping(login_id, login_password)
+            email_contents = check_deadline(class_name_list,kadai_deadline_list)
+            if email_contents:
+                send_kadai_email(email_address,email_contents)
         
         return JsonResponse({'status':'success'})
     
@@ -44,7 +50,7 @@ class HomeView(TemplateView):
             class_name_list,kadai_deadline_list= scraping(login_id, login_password)
             email_contents = check_deadline(class_name_list,kadai_deadline_list)
             if email_contents:
-                auto_email(email_contents,email_address)
+                send_kadai_email(email_address,email_contents)
 
         
         

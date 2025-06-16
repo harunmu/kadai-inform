@@ -4,7 +4,7 @@ from django.views.generic import CreateView
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
-from create_message import auto_email
+from create_email import send_test_email
 from .forms import SignupForm
 
 User = get_user_model()
@@ -19,10 +19,7 @@ class SignupView(CreateView):
         response = super().form_valid(form)
         user = self.object
 
-        title = "Thank You for Registering with service"
-        email_address = user.email
-        message = "登録が完了しました。"
-        auto_email(title,email_address,message)
+        send_test_email(user.email)
 
         return response
 
