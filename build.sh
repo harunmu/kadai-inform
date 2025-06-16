@@ -18,3 +18,4 @@ fi
 
 # Pythonパッケージインストール
 pip install -r requirements.txt
+python manage.py migrate account 0003 --fake
