@@ -20,7 +20,7 @@ class SignupView(CreateView):
         user = self.object
 
         title = "Thank You for Registering with service"
-        email_address = [user.email]
+        email_address = user.email
         message = "登録が完了しました。"
         auto_email(title,email_address,message)
 
