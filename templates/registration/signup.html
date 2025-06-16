@@ -4,59 +4,83 @@
 
 
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-6 text-center">アカウント新規作成</h2>
+<div class="bg-white p-4 rounded shadow-lg w-100" style="max-width: 500px; margin: auto;">
+  <h2 class="h4 mb-4 text-center fw-bold">アカウント新規作成</h2>
 
-        <form method="post" class="space-y-4">
-            {% csrf_token %}
-            
-            <!-- ユーザー名 -->
-            <div>
-                <label class="block mb-1 font-semibold">ユーザー名</label>
-                <p>
-                    {{ form.username }}
-                </p>
-                {% if form.username.errors %}
-                    <p class="text-sm text-red-500">{{ form.username.errors }}</p>
-                {% endif %}
-            </div>
+  <form method="post">
+    {% csrf_token %}
 
-            <!-- ログインID -->
-            <div>
-                <label class="block mb-1 font-semibold">ログインID</label>
-                {{ form.login_id }}
-                {% if form.login_id.errors %}
-                    <p class="text-sm text-red-500">{{ form.login_id.errors }}</p>
-                {% endif %}
-            </div>
-
-            <!-- パスワード1 -->
-            <div>
-                <label class="block mb-1 font-semibold">パスワード</label>
-                {{ form.password1 }}
-                {% if form.password1.errors %}
-                    <p class="text-sm text-red-500">{{ form.password1.errors }}</p>
-                {% endif %}
-            </div>
-
-            <!-- パスワード2 -->
-            <div>
-                <label class="block mb-1 font-semibold">パスワード（確認）</label>
-                {{ form.password2 }}
-                {% if form.password2.errors %}
-                    <p class="text-sm text-red-500">{{ form.password2.errors }}</p>
-                {% endif %}
-            </div>
-
-            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 transition duration-200">
-                登録する
-            </button>
-        </form>
-
-        <p class="mt-6 text-sm text-center text-gray-600">
-            すでにアカウントをお持ちですか？ <a href="{% url 'login' %}" class="text-blue-500 underline">ログイン</a>
-        </p>
+    <!-- ユーザー名 -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">ユーザー名</label>
+      {{ form.username}}
+      {% if form.username.errors %}
+        <div class="form-text text-danger">{{ form.username.errors }}</div>
+      {% endif %}
     </div>
+
+    <!-- ログインID -->
+
+
+    <!-- パスワード -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">パスワード</label>
+      {{ form.password1}}
+      {% if form.password1.errors %}
+        <div class="form-text text-danger">{{ form.password1.errors }}</div>
+      {% endif %}
+    </div>
+
+    <!-- パスワード確認 -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">パスワード（確認）</label>
+      {{ form.password2}}
+      {% if form.password2.errors %}
+        <div class="form-text text-danger">{{ form.password2.errors }}</div>
+      {% endif %}
+    </div>
+
+    <p class="fw-semibold text-secondary border-start border-4 ps-3 mb-3 mt-4">
+        beef+へのログイン情報を入力してください
+    </p>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">ログインID</label>
+      {{ form.login_id}}
+      {% if form.login_id.errors %}
+        <div class="form-text text-danger">{{ form.login_id.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">ログインパスワード</label>
+      {{ form.login_password}}
+      {% if form.login_password.errors %}
+        <div class="form-text text-danger">{{ form.login_password.errors }}</div>
+      {% endif %}
+    </div>
+
+    <p class="fw-semibold text-secondary border-start border-4 ps-3 mb-3 mt-4">
+        通知を受け取るメールアドレスを入力してください
+    </p>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">メールアドレス</label>
+      {{ form.email}}
+      {% if form.email.errors %}
+        <div class="form-text text-danger">{{ form.email.errors }}</div>
+      {% endif %}
+    </div>
+
+    <!-- 送信ボタン -->
+    <button type="submit" class="btn btn-primary w-100">登録する</button>
+  </form>
+
+  <p class="mt-4 text-center text-muted small">
+    すでにアカウントをお持ちですか？ <a href="{% url 'login' %}" class="text-primary text-decoration-underline">ログイン</a>
+  </p>
+</div>
+
 
 {% endblock content %}
 
