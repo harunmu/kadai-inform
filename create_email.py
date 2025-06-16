@@ -35,8 +35,8 @@ def auto_email(title,message,email_address):
 def send_test_email(email_address):
     title = "アカウントは正常に作成されました"
     message = "ご登録ありがとうございます！"
-    
-    auto_email(title,message,email_address,)
+
+    auto_email(title,message,email_address)
 
 def send_kadai_email(email_address,email_contents,):
     title = "提出期限が近い課題があります"
