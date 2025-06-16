@@ -20,7 +20,7 @@ def cron_run(request):
             .exclude(login_password__isnull=True)
             .exclude(email__isnull=True)
             .exclude(email__exact='')
-            .exclude(notification=False)
+            .exclude(is_notification=False)
             .values_list('login_id','login_password','email')
         )
         for login_info in login_info_list:
@@ -51,7 +51,7 @@ class HomeView(TemplateView):
             .exclude(login_password__isnull=True)
             .exclude(email__isnull=True)
             .exclude(email__exact='')
-            .exclude(notification=False)
+            .exclude(is_notification=False)
             .values_list('login_id','login_password','email')
         )
         print(login_info_list)
