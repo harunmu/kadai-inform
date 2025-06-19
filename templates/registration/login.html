@@ -13,7 +13,7 @@
     <!-- ユーザー名 -->
     <div class="mb-3">
         <label for="{{form.username.id_for_label}} "class="form-label fw-semibold">ユーザー名</label>
-        <input type="text" id="{{form.username.id_for_label}}" required class = "form-control">
+        <input type="text" id="{{form.username.id_for_label}}" name="username" required class = "form-control">
       {% if form.username.errors %}
         <div class="form-text text-danger">{{ form.username.errors }}</div>
       {% endif %}
@@ -22,8 +22,8 @@
     <!-- パスワード -->
     <div class="mb-3">
       <label class="form-label fw-semibold">パスワード</label>
-    <input type="text" id="{{form.password.id_for_label}}" required class = "form-control">
-      {% if form.password1.errors %}
+    <input type="text" id="{{form.password.id_for_label}}" name="password" required class = "form-control">
+      {% if form.password.errors %}
         <div class="form-text text-danger">{{ form.password.errors }}</div>
       {% endif %}
     </div>
