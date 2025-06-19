@@ -25,3 +25,6 @@ class SignupView(CreateView):
 
 class SignupDoneView(TemplateView):
     template_name = "registration/signup_done.html"
+    
+class LoginView(TemplateView):
+    template_name = "registration/login.html"
