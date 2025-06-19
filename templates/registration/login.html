@@ -14,7 +14,7 @@
     <!-- ユーザー名 -->
     <div class="mb-3">
         <label for="{{form.username.id_for_label}} "class="form-label fw-semibold">ユーザー名</label>
-        <input type="text" id="{{form.username.id_for_label}}" name="username" required class = "form-control">
+        <input type="text" name="username" id="{{form.username.id_for_label}}" value="{{form.username.value}}" required class = "form-control">
       
       {% if form.non_field_errors %}
         <div class="form-text text-danger">{{ form.non_field_errors }}</div>
@@ -27,8 +27,8 @@
     <!-- パスワード -->
     <div class="mb-3">
       <label class="form-label fw-semibold">パスワード</label>
-      <input type="text" id="{{form.password.id_for_label}}" name="password" required class = "form-control">
-      
+      <input type="text"  name="password" id="{{form.password.id_for_label}}" value="{{form.password.value}}" required class = "form-control">
+
       {% if form.non_field_errors %}
         <div class="form-text text-danger">{{ form.non_field_errors }}</div>
       {% endif %}
