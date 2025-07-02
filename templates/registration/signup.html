@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% block header %}{% include "_mini_header.html" %}{% endblock header %}
+
+
 {% block content %}
 
 
@@ -40,7 +43,7 @@
       {% endif %}
     </div>
 
-    <p class="fw-semibold text-secondary border-start border-4 ps-3 mb-3 mt-4">
+    <p class="fw-semibold text-secondary border-start border-4 border-primary ps-3 mb-3 mt-4">
         beef+へのログイン情報を入力してください
     </p>
 
@@ -60,7 +63,7 @@
       {% endif %}
     </div>
 
-    <p class="fw-semibold text-secondary border-start border-4 ps-3 mb-3 mt-4">
+    <p class="fw-semibold text-secondary border-start border-4 border-primary ps-3 mb-3 mt-4">
         通知を受け取るメールアドレスを入力してください
     </p>
 

@@ -1,10 +1,16 @@
-<div style="padding-top: 50px;" class=' mx-2 border-bottom border-2 border-dark  d-flex justify-content-center align-items-top '>
+
+<div  class=' mx-2 border-bottom border-2 border-dark  d-flex justify-content-center align-items-top' style="padding-top: 50px;">
     <div class='w-25'>
         <p class='fs-2 mb-0  border-end border-dark border-1'>神戸大学</p>
         <p class='ms-1'>Kobe University</p>
     </div>
-    <div class='mt-2' style="font-size: 18px;">
+    <div class='mt-2 d-flex' style="font-size: 18px;">
         <a class="ms-5 text-success" href="https://beefplus.center.kobe-u.ac.jp/login">Beef+</a>
-        <a class="ms-5 text-success" href="{% url 'account:signup' %}">アカウント</a>
+        {% if user.is_authenticated %}
+            <a class="ms-5 text-success" href="{# 設定ページのURLに変更してください #}">設定</a>
+        {% else %}
+            <a class="ms-5 text-success" href="{% url 'account:signup' %}">新規作成</a>
+            <a class="ms-5 text-success" href="{% url 'account:login' %}">ログイン</a>
+        {% endif %}
     </div>
 </div>
