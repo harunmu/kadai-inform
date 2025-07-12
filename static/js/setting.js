@@ -7,4 +7,13 @@ function setupEdit(section) {
         document.getElementById(section+'-save').classList.remove('d-none');
     });
 }
-['email','loginid','loginpw','notif'].forEach(setupEdit); 
+
+// 各項目の「確定」ボタンでフォームを送信
+function setupSave(section) {
+    document.getElementById(section+'-save').addEventListener('click', function() {
+        document.getElementById('setting-form').submit();
+    });
+}
+
+['email','loginid','loginpw','notif'].forEach(setupEdit);
+['email','loginid','loginpw','notif'].forEach(setupSave); 

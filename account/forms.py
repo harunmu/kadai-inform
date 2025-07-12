@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
 
 User = get_user_model()
 
@@ -11,7 +12,7 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('username','email','login_id','login_password') #パスワード以外の表示したい項目を記述
 
-class UserUpdateForm(UserCreationForm):
+class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'login_id', 'login_password', 'is_notification')
