@@ -5,12 +5,23 @@
         <p class='ms-1'>Kobe University</p>
     </div>
     <div class='mt-2 d-flex' style="font-size: 18px;">
-        <a class="ms-5 text-success" href="https://beefplus.center.kobe-u.ac.jp/login">Beef+</a>
+        <a href="https://beefplus.center.kobe-u.ac.jp/login">
+            <button type="button" class="ms-5 border-bottom border-success text-success">Beef+</button>
+        </a>
         {% if user.is_authenticated %}
-            <a class="ms-5 text-success" href="{% url 'account:setting' %}">設定</a>
+            <a href="{% url 'account:setting' %}">
+                <button type="button" class="ms-5 border-bottom border-success text-success">設定</button>
+            </a>
+            <form action="{% url 'account:logout' %}" method="POST">{% csrf_token %}
+                <button type="submit" class="ms-5 border-bottom border-success text-success">ログアウト</button>
+            </form>  
         {% else %}
-            <a class="ms-5 text-success" href="{% url 'account:signup' %}">新規作成</a>
-            <a class="ms-5 text-success" href="{% url 'account:login' %}">ログイン</a>
+            <a href="{% url 'account:signup' %}">
+                <button type="button" class="ms-5 border-bottom border-success text-success">新規作成</button>
+            </a>
+            <a href="{% url 'account:login' %}">
+                <button type="button" class="ms-5 border-bottom border-success text-success">ログイン</button>
+            </a>
         {% endif %}
     </div>
 </div>

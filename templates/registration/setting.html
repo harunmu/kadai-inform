@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
+
+
 {% block content %}
-<div class="container mt-5 mb-5">
+<div class="container mb-5" style="margin-top: 150px;">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-7">
             <div class="card shadow-sm border-0">
                 <div class="card-body">
-                    <h2 class="card-title text-center mb-4" style="font-weight:bold; color:#198754;">アカウント設定</h2>
+                    <h2 class="card-title text-center mb-4" style="sfont-weight:bold; color:#198754;">アカウント設定</h2>
+                    <p class="text-center mb-4" style="font-size: 1.2rem; color: #333;">{{ user.username }}</p>
                     <form method="post" id="setting-form">{% csrf_token %}
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-4 col-form-label">メールアドレス</label>
                             <div class="col-sm-5">
-                                <span id="email-view">{{ user.email }}</span>
+                                <span id="email-view">{{ user.email|default_if_none:"未設定"|default:"未設定" }}</span>
                                 <input type="email" class="form-control d-none" id="email-input" name="email" value="{{ user.email }}">
                             </div>
                             <div class="col-sm-3">
@@ -21,7 +24,7 @@
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-4 col-form-label">ログインID</label>
                             <div class="col-sm-5">
-                                <span id="loginid-view">{{ user.login_id }}</span>
+                                <span id="loginid-view">{{ user.login_id|default_if_none:"未設定"|default:"未設定" }}</span>
                                 <input type="text" class="form-control d-none" id="loginid-input" name="login_id" value="{{ user.login_id }}">
                             </div>
                             <div class="col-sm-3">
@@ -32,7 +35,7 @@
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-4 col-form-label">ログインパスワード</label>
                             <div class="col-sm-5">
-                                <span id="loginpw-view">********</span>
+                                <span id="loginpw-view">{% if user.login_password %}********{% else %}未設定{% endif %}</span>
                                 <input type="password" class="form-control d-none" id="loginpw-input" name="login_password" value="{{ user.login_password }}">
                             </div>
                             <div class="col-sm-3">
@@ -57,19 +60,8 @@
                     </form>
                 </div>
             </div>
+            {% include "reverse_button.html" %}
         </div>
     </div>
 </div>
-<script>
-// 各項目の「変更」ボタンで編集モードに切り替え
-function setupEdit(section) {
-    document.getElementById(section+'-edit').addEventListener('click', function() {
-        document.getElementById(section+'-view').classList.add('d-none');
-        document.getElementById(section+'-input').classList.remove('d-none');
-        document.getElementById(section+'-edit').classList.add('d-none');
-        document.getElementById(section+'-save').classList.remove('d-none');
-    });
-}
-['email','loginid','loginpw','notif'].forEach(setupEdit);
-</script>
-{% endblock %} 
+{% endblock %}

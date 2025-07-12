@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
+from django.contrib.auth.views import LogoutView as DjangoLogoutView
 
 from create_email import send_test_email
 from .forms import SignupForm, UserUpdateForm
@@ -36,3 +37,6 @@ class UserSettingView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+class LogoutView(DjangoLogoutView):
+    next_page = reverse_lazy('core:home')

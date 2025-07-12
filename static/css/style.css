@@ -1,0 +1,53 @@
+/* Aタグのデフォルトスタイルを無効にする */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ホバー時のスタイルも無効にする */
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 訪問済みリンクのスタイルも無効にする */
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* アクティブ状態のスタイルも無効にする */
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ボタンタグのデフォルトスタイルを無効にする */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+/* ボタンのホバー時のスタイルも無効にする */
+button:hover {
+    background: none;
+    border: none;
+}
+
+/* ボタンのアクティブ状態のスタイルも無効にする */
+button:active {
+    background: none;
+    border: none;
+}
+
+/* ボタンのフォーカス時のスタイルも無効にする */
+button:focus {
+    background: none;
+    border: none;
+    outline: none;
+} 
