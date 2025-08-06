@@ -10,49 +10,49 @@
                     <h2 class="card-title text-center mb-4" style="sfont-weight:bold; color:#198754;">アカウント設定</h2>
                     <p class="text-center mb-4" style="font-size: 1.2rem; color: #333;">{{ user.username }}</p>
                     <form method="post" id="setting-form">{% csrf_token %}
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-4 col-form-label">メールアドレス</label>
-                            <div class="col-sm-5">
+                        <div class="mb-3 row align-items-center setting-row">
+                            <label class="col-sm-4 col-form-label setting-label">メールアドレス</label>
+                            <div class="col-sm-5 setting-value">
                                 <span id="email-view">{{ user.email|default_if_none:"未設定"|default:"未設定" }}</span>
                                 <input type="email" class="form-control d-none" id="email-input" name="email" value="{{ user.email }}">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 setting-button">
                                 <button type="button" class="btn btn-outline-success btn-sm" id="email-edit">変更</button>
                                 <button type="submit" class="btn btn-success btn-sm d-none" id="email-save">確定</button>
                             </div>
                         </div>
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-4 col-form-label">ログインID</label>
-                            <div class="col-sm-5">
+                        <div class="mb-3 row align-items-center setting-row">
+                            <label class="col-sm-4 col-form-label setting-label">ログインID</label>
+                            <div class="col-sm-5 setting-value">
                                 <span id="loginid-view">{{ user.login_id|default_if_none:"未設定"|default:"未設定" }}</span>
                                 <input type="text" class="form-control d-none" id="loginid-input" name="login_id" value="{{ user.login_id }}">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 setting-button">
                                 <button type="button" class="btn btn-outline-success btn-sm" id="loginid-edit">変更</button>
                                 <button type="submit" class="btn btn-success btn-sm d-none" id="loginid-save">確定</button>
                             </div>
                         </div>
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-4 col-form-label">ログインパスワード</label>
-                            <div class="col-sm-5">
+                        <div class="mb-3 row align-items-center setting-row">
+                            <label class="col-sm-4 col-form-label setting-label">ログインパスワード</label>
+                            <div class="col-sm-5 setting-value">
                                 <span id="loginpw-view">{% if user.login_password %}********{% else %}未設定{% endif %}</span>
                                 <input type="password" class="form-control d-none" id="loginpw-input" name="login_password" value="{{ user.login_password }}">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 setting-button">
                                 <button type="button" class="btn btn-outline-success btn-sm" id="loginpw-edit">変更</button>
                                 <button type="submit" class="btn btn-success btn-sm d-none" id="loginpw-save">確定</button>
                             </div>
                         </div>
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-4 col-form-label">通知メール</label>
-                            <div class="col-sm-5">
+                        <div class="mb-3 row align-items-center setting-row">
+                            <label class="col-sm-4 col-form-label setting-label">通知メール</label>
+                            <div class="col-sm-5 setting-value">
                                 <span id="notif-view">{{ user.is_notification|yesno:'受信する,受信しない' }}</span>
                                 <select class="form-select d-none" id="notif-input" name="is_notification">
                                     <option value="True" {% if user.is_notification %}selected{% endif %}>受信する</option>
                                     <option value="False" {% if not user.is_notification %}selected{% endif %}>受信しない</option>
                                 </select>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 setting-button">
                                 <button type="button" class="btn btn-outline-success btn-sm" id="notif-edit">変更</button>
                                 <button type="submit" class="btn btn-success btn-sm d-none" id="notif-save">確定</button>
                             </div>

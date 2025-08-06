@@ -2,8 +2,7 @@
 
 {% block content %}
 
-
-<div class="container mb-5" style="max-width: 500px; margin: auto; margin-top: 150px;">
+<div class="container mb-5 form-container" style="max-width: 500px; margin: auto; margin-top: 150px;">
   <div class="bg-white p-4 rounded shadow-lg w-100">
     <h2 class="h4 mb-4 text-center fw-bold">アカウント新規作成</h2>
 
@@ -24,9 +23,8 @@
         <label class="form-label fw-semibold">パスワード</label>
         <div class="input-group">
           <input type="text" name="{{form.password1.name}}" id="{{form.password1.id_for_label}}" required class="form-control">
-          {% comment %} <button class="password-toggle-btn" type="button" onclick="togglePassword('{{form.password1.id_for_label}}')">
-            <i class="bi bi-eye"></i>
-          </button> {% endcomment %}
+
+           {% endcomment %}
         </div>
         {% if form.password1.errors %}
           <div class="form-text text-danger">{{ form.password1.errors }}</div>

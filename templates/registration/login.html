@@ -2,14 +2,12 @@
 
 {% block content %}
 
-
-<div class="container mb-5" style="max-width: 500px; margin: auto; margin-top: 150px;">
+<div class="container mb-5 form-container" style="max-width: 500px; margin: auto; margin-top: 150px;">
   <div class="bg-white p-4 rounded shadow-lg w-100" >
     <h2 class="h4 mb-4 text-center fw-bold">アカウント ログイン</h2>
 
     <form method="post">
       {% csrf_token %}
-
 
       <!-- ユーザー名 -->
       <div class="mb-3">
@@ -44,6 +42,5 @@
   </div>
   {% include "reverse_button.html" %}
 </div>
-
 
 {% endblock content %}

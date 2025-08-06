@@ -22,12 +22,12 @@ def auto_email(title,message,email_address):
     # サーバー指定
 
     smtp_host = 'smtp.gmail.com'
-    smtp_port = '587'
+    smtp_port = 587  # int型に修正
     smtp_password = 'igtyubqrehudffyt'
-    server = smtplib.SMTP(smtp_host,smtp_port)
+    server = smtplib.SMTP(smtp_host, smtp_port)
     # 第一引数でサーバーアドレス、第二引数でポート番号
     server.starttls() #TLSモードでSMPT接続
-    server.login(from_email,smtp_password) #暗号化した通信でgmailのsmtpサーバーにログイン
+    server.login(from_email, smtp_password) #暗号化した通信でgmailのsmtpサーバーにログイン
     server.send_message(msg) #メール送信
     server.quit() #接続を終了 
 
