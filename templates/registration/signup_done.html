@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 
-{% block header %}{% include "_mini_header.html" %}{% endblock header %}
-
 
 {% block content %}
 
-<div class="bg-white p-5 rounded-3 shadow-sm w-100" style="max-width: 500px; margin: auto;">
-  <div class="text-center mb-4">
-    <h2 class="h4 mt-3 mb-3  fw-bold">登録が完了しました</h2>
-    <i class="bi bi-envelope-check-fill text-success" style="font-size: 3rem;"></i>
+<div class="container mb-5" style="max-width: 500px; margin: auto; margin-top: 150px;">
+  <div class="bg-white p-5 rounded-3 shadow-sm w-100">
+    <div class="text-center mb-4">
+      <h2 class="h4 mt-3 mb-3  fw-bold">登録が完了しました</h2>
+      <i class="bi bi-envelope-check-fill text-success" style="font-size: 3rem;"></i>
+    </div>
+
+
+
+    <div class="alert alert-success text-center">
+      ご登録いただいたメールアドレスに確認メールを送信しました。
+    </div>
+
+    <p class="text-muted text-center" style="font-size: 0.95rem;">
+      メールが届かない場合は<br>
+      「<strong>アカウント &gt; 設定</strong>」から正しいメールアドレスを登録してください。
+    </p>
   </div>
-
-
-
-  <div class="alert alert-success text-center">
-    ご登録いただいたメールアドレスに確認メールを送信しました。
-  </div>
-
-  <p class="text-muted text-center" style="font-size: 0.95rem;">
-    メールが届かない場合は<br>
-    「<strong>アカウント &gt; 設定</strong>」から正しいメールアドレスを登録してください。
-  </p>
+  {% include "reverse_button.html" %}
 </div>
 
 {% endblock content %}

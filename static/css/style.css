@@ -50,4 +50,26 @@ button:focus {
     background: none;
     border: none;
     outline: none;
+}
+
+/* パスワード表示ボタンのスタイル */
+.password-toggle-btn {
+    background: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-left: none;
+    color: #6c757d;
+}
+
+.password-toggle-btn:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+/* input-groupのボーダー調整 */
+.input-group .form-control {
+    border-right: none;
+}
+
+.input-group .password-toggle-btn {
+    border-left: none;
 } 

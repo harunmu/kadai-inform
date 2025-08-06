@@ -13,19 +13,21 @@
       <!-- ユーザー名 -->
       <div class="mb-3">
         <label class="form-label fw-semibold">ユーザー名</label>
-        <input type="text" id="{{form.username.id_for_label}}" required class = "form-control">
+        <input type="text" name="{{form.username.name}}" id="{{form.username.id_for_label}}" required class = "form-control">
         {% if form.username.errors %}
           <div class="form-text text-danger">{{ form.username.errors }}</div>
         {% endif %}
       </div>
 
-      <!-- ログインID -->
-
-
       <!-- パスワード -->
       <div class="mb-3">
         <label class="form-label fw-semibold">パスワード</label>
-        <input type="text" id="{{form.password1.id_for_label}}" required class = "form-control">
+        <div class="input-group">
+          <input type="text" name="{{form.password1.name}}" id="{{form.password1.id_for_label}}" required class="form-control">
+          {% comment %} <button class="password-toggle-btn" type="button" onclick="togglePassword('{{form.password1.id_for_label}}')">
+            <i class="bi bi-eye"></i>
+          </button> {% endcomment %}
+        </div>
         {% if form.password1.errors %}
           <div class="form-text text-danger">{{ form.password1.errors }}</div>
         {% endif %}
@@ -34,7 +36,12 @@
       <!-- パスワード確認 -->
       <div class="mb-3">
         <label class="form-label fw-semibold">パスワード（確認）</label>
-        <input type="text" id="{{form.password2.id_for_label}}" required class = "form-control">
+        <div class="input-group">
+          <input type="password" name="{{form.password2.name}}" id="{{form.password2.id_for_label}}" required class="form-control">
+          <button class="password-toggle-btn" type="button" onclick="togglePassword('{{form.password2.id_for_label}}')">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
         {% if form.password2.errors %}
           <div class="form-text text-danger">{{ form.password2.errors }}</div>
         {% endif %}
@@ -46,7 +53,7 @@
 
       <div class="mb-3">
         <label class="form-label fw-semibold">ログインID</label>
-        <input type="text" id="{{form.login_id.id_for_label}}" required class = "form-control">
+        <input type="text" name="{{form.login_id.name}}" id="{{form.login_id.id_for_label}}" required class = "form-control">
         {% if form.login_id.errors %}
           <div class="form-text text-danger">{{ form.login_id.errors }}</div>
         {% endif %}
@@ -54,7 +61,7 @@
 
       <div class="mb-3">
         <label class="form-label fw-semibold">ログインパスワード</label>
-        <input type="text" id="{{form.login_password.id_for_label}}" required class = "form-control">
+        <input type="password" name="{{form.login_password.name}}" id="{{form.login_password.id_for_label}}" required class = "form-control">
         {% if form.login_password.errors %}
           <div class="form-text text-danger">{{ form.login_password.errors }}</div>
         {% endif %}
@@ -66,7 +73,7 @@
 
       <div class="mb-3">
         <label class="form-label fw-semibold">メールアドレス</label>
-        <input type="text" id="{{form.email.id_for_label}}" required class = "form-control">
+        <input type="email" name="{{form.email.name}}" id="{{form.email.id_for_label}}" required class = "form-control">
         {% if form.email.errors %}
           <div class="form-text text-danger">{{ form.email.errors }}</div>
         {% endif %}
@@ -83,6 +90,23 @@
   {% include "reverse_button.html" %}
 </div>
 
+<script>
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const button = input.nextElementSibling;
+    const icon = button.querySelector('i');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+    }
+}
+</script>
 
 {% endblock content %}
 

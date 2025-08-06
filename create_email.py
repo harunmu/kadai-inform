@@ -36,6 +36,9 @@ def send_test_email(email_address):
     title = "アカウントは正常に作成されました"
     message = "ご登録ありがとうございます！"
 
+    message += "アカウント情報の変更はこちら\n"
+    message += "https://kadai-inform.onrender.com/account/login/\n"
+
     auto_email(title,message,email_address)
 
 def send_kadai_email(email_address,email_contents,):
@@ -45,8 +48,12 @@ def send_kadai_email(email_address,email_contents,):
         message += f"提出 {email_content[0]}日前\n"
         message += f"科目名: {email_content[1]}\n"
         message += f"期限: {email_content[2]}\n\n"
-    message += "https://beefplus.center.kobe-u.ac.jp"
-    
+
+    message += "beef+へのログインはこちら\n"
+    message += "https://beefplus.center.kobe-u.ac.jp\n\n"
+    message += "アカウント情報の変更はこちら\n"
+    message += "https://kadai-inform.onrender.com/account/login/\n"
+
     auto_email(title,message,email_address)
 
 # if __name__ == '__main__':
