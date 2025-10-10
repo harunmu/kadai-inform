@@ -21,6 +21,14 @@
                         <li>「設定」から登録情報を変更</li>
                         <li>変更内容を記載した確認メールが届きます</li>
                     </ol>
+                   {% if user.is_authenticated %}
+                    <div class="text-center mt-4">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">確認メールを送信</button>
+                        </form>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
