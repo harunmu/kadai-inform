@@ -21,8 +21,8 @@ class SignupView(CreateView):
     def form_valid(self,form):
         print("form_valid")
         user = form.save()
-        print("sucess1")
-        send_test_email(user.email)
+        print(user.email)
+        # send_test_email(user.email)
         print("sucess2")
         return super().form_valid(form)
 
