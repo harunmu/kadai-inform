@@ -2,35 +2,10 @@ import datetime
 from email.mime.text import MIMEText
 import smtplib
 
-def auto_email(title,message,email_address):
+from django.core.mail import send_mail
+from django.conf import settings
 
-    # メール情報の設定
-
-    from_email = 'rushia0901@gmail.com'
-    mail_title = title
-    message = message
-    to_email = email_address
-
-    # MIMEオブジェクトでメールを作成
-
-    msg = MIMEText(message, 'plain')
-    # 第一引数に本文、第二引数にメール形式　(HTML形式の場合 'html')
-    msg['Subject'] = mail_title #件名
-    msg['To'] = to_email #送信元
-    msg['From'] = from_email #宛先
-
-    # サーバー指定
-
-    smtp_host = 'smtp.gmail.com'
-    smtp_port = 587  # int型に修正
-    smtp_password = 'igtyubqrehudffyt'
-    server = smtplib.SMTP(smtp_host, smtp_port)
-    # 第一引数でサーバーアドレス、第二引数でポート番号
-    server.starttls() #TLSモードでSMPT接続
-    server.login(from_email, smtp_password) #暗号化した通信でgmailのsmtpサーバーにログイン
-    server.send_message(msg) #メール送信
-    server.quit() #接続を終了 
-
+from_email = settings.EMAIL_HOST_USER 
 
 def send_test_email(email_address):
     title = "アカウントは正常に作成されました"
@@ -38,8 +13,10 @@ def send_test_email(email_address):
 
     message += "アカウント情報の変更はこちら\n"
     message += "https://kadai-inform.onrender.com/account/login/\n"
-
-    auto_email(title,message,email_address)
+    
+    recipient_list = [email_address]
+    
+    send_mail(title,message,from_email,recipient_list)
 
 def send_kadai_email(email_address,email_contents,):
     title = "提出期限が近い課題があります"
@@ -53,8 +30,10 @@ def send_kadai_email(email_address,email_contents,):
     message += "https://beefplus.center.kobe-u.ac.jp\n\n"
     message += "アカウント情報の変更はこちら\n"
     message += "https://kadai-inform.onrender.com/account/login/\n"
+    
+    recipient_list = [email_address]
 
-    auto_email(title,message,email_address)
+    send_mail(title,message,from_email,recipient_list)
 
 # if __name__ == '__main__':
 #     auto_email()
