@@ -44,8 +44,8 @@ class HomeView(TemplateView):
         if request.user.is_authenticated:
             email_address = request.user.email
             if email_address:
-                print("send email")
                 send_test_email(email_address)
+                print("send email2")
 
         return render(request, self.template_name)
     

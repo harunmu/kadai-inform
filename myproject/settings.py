@@ -151,7 +151,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 # emaoil settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_PORT =  587
 EMAIL_USE_TLS = True
 
@@ -159,7 +159,8 @@ if os.environ.get('EMAIL_HOST_PASSWORD'):
     
     EMAIL_HOST_USER = 'apikey'
     EMAIL_HOST_PASSWORD =  os.environ.get('EMAIL_HOST_PASSWORD')
-    
 else:
     EMAIL_HOST_USER = 'rushia0901@gmail.com'
     EMAIL_HOST_PASSWORD = 'igtyubqrehudffyt'
+
+DEFAULT_FROM_EMAIL= 'rushia0901@gmail.com'

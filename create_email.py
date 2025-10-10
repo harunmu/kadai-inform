@@ -5,7 +5,7 @@ import smtplib
 from django.core.mail import send_mail
 from django.conf import settings
 
-from_email = settings.EMAIL_HOST_USER 
+from_email = settings.DEFAULT_FROM_EMAIL
 
 def send_test_email(email_address):
     title = "アカウントは正常に作成されました"
