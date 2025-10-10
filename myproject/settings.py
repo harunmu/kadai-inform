@@ -159,8 +159,5 @@ if os.environ.get('EMAIL_HOST_PASSWORD'):
     
     EMAIL_HOST_USER = 'apikey'
     EMAIL_HOST_PASSWORD =  os.environ.get('EMAIL_HOST_PASSWORD')
-else:
-    EMAIL_HOST_USER = 'rushia0901@gmail.com'
-    EMAIL_HOST_PASSWORD = 'igtyubqrehudffyt'
 
 DEFAULT_FROM_EMAIL= 'rushia0901@gmail.com'
